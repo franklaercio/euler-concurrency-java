@@ -20,27 +20,8 @@ public class EulerFixedExecutor {
 
       ExecutorService executor = Executors.newFixedThreadPool(numberOfTerms);
 
-      List<Future<BigDecimal>> results = new ArrayList<>();
-
-      try {
-        for (int term = 1; term <= numberOfTerms; term++) {
-          Callable<BigDecimal> calculator = new EulerTermCalculator(term, NUMBER_OF_PRECISION);
-          Future<BigDecimal> factorial = executor.submit(calculator);
-          results.add(factorial);
-        }
-
-        BigDecimal eulerNumber = BigDecimal.ONE;
-
-        for (Future<BigDecimal> result : results) {
-          eulerNumber = eulerNumber.add(result.get());
-        }
-
-        System.out.println("The number of Euler is: " + eulerNumber);
-      } catch (ExecutionException | InterruptedException e) {
-        e.printStackTrace();
-      } finally {
-        executor.shutdown();
-      }
+      BigDecimal eulerNumber = EulerUtil.calculateEulerNumber(executor, numberOfTerms, NUMBER_OF_PRECISION);
+      System.out.println("The number of Euler is: " + eulerNumber);
     } catch (EulerException e) {
       e.printStackTrace();
     }
