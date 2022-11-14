@@ -2,7 +2,7 @@
 
 The Euler's number is a mathematical constant approximately equal to 2.71828 which can be characterized in many ways. In this project is calculate the infinite series of Euler's number, it can be calculated as the sum of the infinite series.
 
-<img src="img/euler.svg">
+<img src="img/euler.jpeg">
 
 ## Getting started
 
